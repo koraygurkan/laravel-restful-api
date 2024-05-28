@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e3595f81-a990-44bd-a2be-653ccf9d67ab" name="restful api" url="http://91.151.84.84">
+        <fileTransfer host="91.151.84.84" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="34d2ff60-a3df-45f1-9cf2-48aab5c1ccb8" name="cms" url="http://91.151.84.84">
+        <fileTransfer host="91.151.84.84" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="3a6e696e-7abf-470c-b2d9-27d0f33fae4b" name="laravel-course" url="http://91.151.84.84">
+        <fileTransfer host="91.151.84.84" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
