@@ -1,25 +1,19 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Product;
-use App\User;
 
-class DatabaseSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        //$this->call(CourseTableSeeder::class);
-        //$this->call(CoursemTableSeeder::class);
-        //$this->call(UserTableSeeder::class);
-        
-        DB::statement("TRUNCATE TABLE products"); //product tablosunun içerisini boşaltır
+        //kodlar parçalanmasın diye bu şekilde ayrıştırılabilir.
+        /*
         DB::statement("TRUNCATE TABLE users");
-
         //veri ekleme
         DB::table('users')->insert([
             'name' => 'admin',
@@ -29,9 +23,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-
-        //factory ile rastgele veri ekleme
-        factory(Product::class,10)->create();
         factory(User::class,10)->create();
+        */
     }
 }
