@@ -27,12 +27,11 @@ Route::get('/users',function (){
     return factory(User::class, 10)->make();
 });
 
-Route::apiResource('products','Api/ProductController');
-Route::apiResource('users','Api/UserController');
+//Route::apiResource('products','Api\ProductController');
+//Route::apiResource('users','Api/UserController');
 
-/*  //Toplu tanımlama yapılabilir
-Route::apiResource([
-    'products'=>'Api/ProductController',
-    'users'=>'Api/UserController'
+  //Toplu tanımlama yapılabilir
+Route::apiResources([
+    'products'=>'Api\ProductController',
+    'user'=>'Api/UserController'
 ]);
-*/
