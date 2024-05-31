@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/merhaba',function (){
-   return "merhaba";
+Route::get('/hello',function (){
+   return "hello restfull api";
+});
+
+Route::get('/users',function (){
+    return factory(User::class, 10)->make();
 });
