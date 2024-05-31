@@ -33,5 +33,5 @@ Route::get('/users',function (){
   //Toplu tanımlama yapılabilir
 Route::apiResources([
     'products'=>'Api\ProductController',
-    'user'=>'Api/UserController'
+    'user'=>'Api\UserController'
 ]);

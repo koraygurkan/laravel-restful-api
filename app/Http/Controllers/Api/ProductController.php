@@ -15,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        //return Product::all();
+        //return response()->json(Product::all(),200);
+        return response(Product::all());
     }
 
     /**
@@ -37,7 +39,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        //return $product;
+        return response($product,200);
     }
 
     /**
