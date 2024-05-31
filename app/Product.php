@@ -6,7 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //protected $table='products';
-    protected $fillable=['name','slug','price']; //ekleme yapılmasını istediğiniz kolonlar
-    //protected $guarded= ['description']; //ekleme yapılmasını istemediğimiz kolonlar
+    //
 }
