@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/product','ProductController');
+Route::resource('/product','ProductController')->only(['index','show']);
+//only tanımlamasından sonra belirli methodlar kullanılabilir sadece.
+//except 'de ise seçiçiler hariç tüm methodları aktif kullanabilirsiniz.
