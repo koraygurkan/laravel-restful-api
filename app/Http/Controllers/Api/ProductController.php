@@ -69,7 +69,7 @@ class ProductController extends Controller
     {
         //$input=$request->all();
         //$product->update($input);
-        
+
         $product->name = $request->name;
         $product->slug = Str::slug($request->name);
         $product->price = $request->price;
@@ -90,6 +90,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response([
+            'message' => 'Product deleted'
+        ],200);
     }
 }
