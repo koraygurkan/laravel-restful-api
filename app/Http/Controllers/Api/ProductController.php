@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+//use Psy\Util\Str;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -28,9 +30,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $input=$request->all();
+        //$input=$request->all();
+        //$product=Product::create($input);
 
-        $product=Product::create($input);
+        $product=new Product;
+        $product->name = $request->name;
+        $product->slug = Str::slug($request->name);
+        $product->price = $request->price;
+        $product->save();
+
 
        return response([
            'data'=>$product,
@@ -59,7 +67,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $input=$request->all();
+        $product=update($input);
+
+        return response([
+            'data'=>$product,
+            'message'=>'Product Update.'
+        ],200);
     }
 
     /**
