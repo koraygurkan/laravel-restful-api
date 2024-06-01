@@ -67,8 +67,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $input=$request->all();
-        $product=update($input);
+        //$input=$request->all();
+        //$product->update($input);
+        
+        $product->name = $request->name;
+        $product->slug = Str::slug($request->name);
+        $product->price = $request->price;
+        $product->save();
+
 
         return response([
             'data'=>$product,
