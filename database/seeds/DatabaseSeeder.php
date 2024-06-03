@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         //$this->call(CourseTableSeeder::class);
         //$this->call(CoursemTableSeeder::class);
         //$this->call(UserTableSeeder::class);
+        $this->call(  CategoriesTableSeeder::class);
+
         
         DB::statement("TRUNCATE TABLE products"); //product tablosunun içerisini boşaltır
         DB::statement("TRUNCATE TABLE users");
