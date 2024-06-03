@@ -22,6 +22,13 @@ class ProductController extends Controller
         //return response(Product::all());
 
         return response(Product::paginate(10),200);
+
+        //Offset bir veritabanındaki kayıtların kaçıncı kayıttan başlayacağını belirtir.
+        //Limit bu kayıttan itibaren kaç kayıt alacağını belirtir.
+        //(Request $request) indexe bu değeri vermek gerekli bu methodun çalışması için
+//        $offset=$request>offset ? $request>$offset : 0;
+//        $limit=$request->limit ? $request->limit : 10;
+//        return response(Product::offset($offset)->limit($limit)->get(),200);
     }
 
     /**
