@@ -15,13 +15,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //return Product::all();
         //return response()->json(Product::all(),200);
         //return response(Product::all());
 
-        return response(Product::paginate(10),200);
+//        return response(Product::paginate(10),200);
 
         //Offset bir veritabanındaki kayıtların kaçıncı kayıttan başlayacağını belirtir.
         //Limit bu kayıttan itibaren kaç kayıt alacağını belirtir.
@@ -29,6 +29,15 @@ class ProductController extends Controller
 //        $offset=$request>offset ? $request>$offset : 0;
 //        $limit=$request->limit ? $request->limit : 10;
 //        return response(Product::offset($offset)->limit($limit)->get(),200);
+
+        $qb=Product::query();
+        if ($request->has('q'))
+            $qb->where('name','like','%'.$request->query('q').'%');
+
+        if ($request->has('sortBy'))
+            $qb->orderBy($request->query('sortBy'), $request->query('sort','DESC'));
+
+        return response($qb->paginate(10),200);
     }
 
     /**
