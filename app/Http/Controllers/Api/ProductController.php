@@ -19,7 +19,9 @@ class ProductController extends Controller
     {
         //return Product::all();
         //return response()->json(Product::all(),200);
-        return response(Product::all());
+        //return response(Product::all());
+
+        return response(Product::paginate(10),200);
     }
 
     /**

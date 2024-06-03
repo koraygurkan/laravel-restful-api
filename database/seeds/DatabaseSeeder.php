@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
 
 
         //factory ile rastgele veri ekleme
-        factory(Product::class,10)->create();
-        factory(User::class,10)->create();
+        factory(Product::class,1000)->create();
+       // factory(User::class,10)->create();
     }
 }
