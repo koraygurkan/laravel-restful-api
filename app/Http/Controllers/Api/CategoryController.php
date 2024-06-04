@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -15,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return response(Category::all(),200);
     }
 
     /**
@@ -26,7 +27,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $category=new Category;
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->save();
+
+
+        return response([
+            'data'=>$category,
+            'message'=>'Category Created.'
+        ],201);
     }
 
     /**
@@ -37,7 +48,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return $category;
     }
 
     /**
@@ -49,7 +60,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->save();
+
+
+        return response([
+            'data'=>$category,
+            'message'=>'Category Update.'
+        ],200);
     }
 
     /**
@@ -60,6 +79,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return response([
+            'message' => 'Category deleted'
+        ],200);
     }
 }
