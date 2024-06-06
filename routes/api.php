@@ -29,9 +29,11 @@ Route::get('/users',function (){
 
 //Route::apiResource('products','Api\ProductController');
 //Route::apiResource('users','Api/UserController');
+//Route::apiResource('categories','Api/CategoryController');
 
   //Toplu tanımlama yapılabilir
 Route::apiResources([
     'products'=>'Api\ProductController',
-    'user'=>'Api\UserController'
+    'user'=>'Api\UserController',
+    'categories'=>'Api\CategoryController'
 ]);
