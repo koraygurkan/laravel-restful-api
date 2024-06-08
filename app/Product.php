@@ -11,4 +11,9 @@ class Product extends Model
 
     //burada tüm alanlara eklenebilir, ama bir sütun bildirirsem o sütuna eklenemez diyecektir.
     protected $guarded=[];
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category','product_categories');
+    }
 }
