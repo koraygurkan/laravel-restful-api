@@ -30,7 +30,7 @@ class ProductController extends Controller
 //        $limit=$request->limit ? $request->limit : 10;
 //        return response(Product::offset($offset)->limit($limit)->get(),200);
 
-        $qb=Product::query();
+        $qb=Product::query()->with('categories');
         if ($request->has('q'))
             $qb->where('name','like','%'.$request->query('q').'%');
 
