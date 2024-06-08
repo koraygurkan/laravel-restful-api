@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
         //$this->call(CoursemTableSeeder::class);
         //$this->call(UserTableSeeder::class);
        // $this->call(  CategoriesTableSeeder::class);
-
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         
         DB::statement("TRUNCATE TABLE products"); //product tablosunun içerisini boşaltır
-        DB::statement("TRUNCATE TABLE users");
+        DB::statement("TRUNCATE TABLE users"); //user tablosunun içerisini boşaltır
         DB::statement("TRUNCATE TABLE categories");
 
         //veri ekleme
@@ -38,14 +38,10 @@ class DatabaseSeeder extends Seeder
         factory(Category::class,50)->create();
         factory(User::class,10)->create();
 
-        //veri ekleme
-        DB::table('product_categories')->insert
-        (
-            [
-            'product_id' => '1',
-            'categories_id' => '1'
-            ]
-        );
 
+
+
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 }
