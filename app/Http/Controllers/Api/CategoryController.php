@@ -85,4 +85,11 @@ class CategoryController extends Controller
             'message' => 'Category deleted'
         ],200);
     }
+
+    public function custom1()
+    { //pluck sadece bir kolonu almayı sağlıyor ve list olarak verebiliyor.
+//        return Category::pluck('id');
+        return Category::pluck('id','name');
+    }
+
 }

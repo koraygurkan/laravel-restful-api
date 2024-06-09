@@ -114,4 +114,9 @@ class ProductController extends Controller
             'message' => 'Product deleted'
         ],200);
     }
+
+    public function custom1()
+    {
+        return Product::select('id','name')->orderBy('created_at','desc')->take(10)->get();
+    }
 }
