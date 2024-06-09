@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -90,6 +91,17 @@ class CategoryController extends Controller
     { //pluck sadece bir kolonu almayı sağlıyor ve list olarak verebiliyor.
 //        return Category::pluck('id');
         return Category::pluck('id','name');
+    }
+
+    public function report1()
+    { //product categories ile ilgili bir model oluşturmadığımızdan qb ile veriyi çekeceğiz.
+        return DB::table('product_categories as pc')
+            ->selectRaw('c.name, COUNT(*) as total')
+            ->join('categories as c','c.id','=','pc.category_id')
+            ->join('products as p','p.id','=','pc.product_id')
+            ->groupBy('c.name')
+            ->orderByRaw('COUNT(*) DESC')
+            ->get();
     }
 
 }

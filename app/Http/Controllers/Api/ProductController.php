@@ -37,6 +37,8 @@ class ProductController extends Controller
         if ($request->has('sortBy'))
             $qb->orderBy($request->query('sortBy'), $request->query('sort','DESC'));
 
+        $qb=$qb->makeHidden('slug'); // yalnızca index methodunda gizleneeck
+
         return response($qb->paginate(10),200);
     }
 
@@ -132,7 +134,7 @@ class ProductController extends Controller
                 return [
                     '_id'=>$product['id'],
                     'product_name'=>$product['name'],
-                    'product_price'=>$product['price'] * 1,03
+                    'product_price'=>$product['price']*1,03
                 ];
             });
             return $mapped->all();
