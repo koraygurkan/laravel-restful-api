@@ -117,6 +117,25 @@ class ProductController extends Controller
 
     public function custom1()
     {
-        return Product::select('id','name')->orderBy('created_at','desc')->take(10)->get();
+//        return Product::select('id','name')->orderBy('created_at','desc')->take(10)->get();
+        //takma isim tanımlayarak veri çekme
+        return Product::selectRaw('id as product_id, name as product_name')
+            ->orderBy('created_at','desc')
+            ->take(10)
+            ->get();
     }
+
+    public function custom2()
+    {
+            $products=Product::OrderBy('created_at','desc')->take(10)->get();
+            $mapped=$products->map(function ($product) {
+                return [
+                    '_id'=>$product['id'],
+                    'product_name'=>$product['name'],
+                    'product_price'=>$product['price'] * 1,03
+                ];
+            });
+            return $mapped->all();
+    }
+
 }
