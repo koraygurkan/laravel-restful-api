@@ -32,6 +32,7 @@ Route::get('/users',function (){
 //Route::apiResource('categories','Api/CategoryController');
 
 Route::get('categories/custom1','Api\CategoryController@custom1');
+Route::get('products/custom1','Api\ProductController@custom1');
 
   //Toplu tanımlama yapılabilir
 Route::apiResources([
