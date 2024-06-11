@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -99,6 +100,8 @@ class UserController extends Controller
     public function custom1()
     {
         $user2=user::find(2);
-        return $user2->toJson();
+        //return $user2->toJson();
+        //return $user2; //normal listeleme
+        return new UserResource($user2); //UserResource'deki tanımlanan kolonları gösterme
     }
 }
