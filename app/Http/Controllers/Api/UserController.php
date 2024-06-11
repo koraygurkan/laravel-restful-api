@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Http\Request;
@@ -99,9 +100,29 @@ class UserController extends Controller
 
     public function custom1()
     {
-        $user2=user::find(2);
+       // $user2=user::find(2);
         //return $user2->toJson();
         //return $user2; //normal listeleme
-        return new UserResource($user2); //UserResource'deki tanımlanan kolonları gösterme
+        //return new UserResource($user2); //UserResource'deki tanımlanan kolonları gösterme
+
+
+        //birden fazla kaydı alma
+//        $users=User::all();
+//        return UserResource::collection($users);
+
+        //data özelliği içerisindeki değerler yetersizse bu şekilde kullanım yapıyoruz. ek kolon tanımlamak istersek bunu kullancaz.
+        //Ayrıca UserCollection dosyasından tanımlandı bunlar
+//        $users=User::all();
+//        return new UserCollection($users);
+
+        //Doğrudan ek dosya ekleme. Collectiona gerek kalmaz ek dosyaya, additional methoduyla bu şekilde gerçekleştirebilirsiiniz. 
+        $users=User::all();
+        return UserResource::collection($users)->additional([
+           'meta'=> [
+               'total_users'=>$users->count(),
+                'custom' =>'value'
+               ]
+        ]);
+
     }
 }
