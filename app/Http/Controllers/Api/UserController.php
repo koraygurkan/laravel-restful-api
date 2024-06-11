@@ -95,4 +95,10 @@ class UserController extends Controller
             'message' => 'User deleted'
         ],200);
     }
+
+    public function custom1()
+    {
+        $user2=user::find(2);
+        return $user2->toJson();
+    }
 }
