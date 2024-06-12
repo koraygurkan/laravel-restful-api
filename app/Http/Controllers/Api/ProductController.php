@@ -37,7 +37,7 @@ class ProductController extends Controller
         if ($request->has('sortBy'))
             $qb->orderBy($request->query('sortBy'), $request->query('sort','DESC'));
 
-        $qb=$qb->makeHidden('slug'); // yalnızca index methodunda gizleneeck
+//        $qb=$qb->makeHidden('slug'); // yalnızca index methodunda gizleneeck !çalışmıyor!
 
         return response($qb->paginate(10),200);
     }
@@ -138,6 +138,11 @@ class ProductController extends Controller
                 ];
             });
             return $mapped->all();
+    }
+
+    public function custom3()
+    {
+
     }
 
 }
