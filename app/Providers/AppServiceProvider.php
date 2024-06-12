@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Data anahatarı gelmez, verileri doğrudan çekeriz.
+        //ek kolonların olduğu isteklerde yine data gelir. 
+        //Resource::withoutWrapping();
     }
 }
