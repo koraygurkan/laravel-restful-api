@@ -101,6 +101,10 @@ class UserController extends Controller
     public function custom1()
     {
        // $user2=user::find(2);
+
+        //Yalnızca belirli bir methodun içeriisnde datayı kaldırmak istersem böyle yapmalıyım;
+        //UserResource::withoutWrapping();
+
         //return $user2->toJson();
         //return $user2; //normal listeleme
         //return new UserResource($user2); //UserResource'deki tanımlanan kolonları gösterme
