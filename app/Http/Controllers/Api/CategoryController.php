@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
-class CategoryController extends Controller
+//class CategoryController extends Controller
+class CategoryController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return response(Category::all(),200);
+        //return response(Category::all(),200);
+        return $this->apiResponse(Category::all(),'Categories fetched', 200);
     }
 
     /**
@@ -35,10 +37,12 @@ class CategoryController extends Controller
         $category->save();
 
 
-        return response([
-            'data'=>$category,
-            'message'=>'Category Created.'
-        ],201);
+//        return response([
+//            'data'=>$category,
+//            'message'=>'Category Created.'
+//        ],201);
+
+        return $this->apiResponse($category,'Category Created.',201);
     }
 
     /**
@@ -49,7 +53,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return $category;
+//        return $category;
+        return $this->apiResponse($category, 'category fetched', 200);
     }
 
     /**
@@ -65,11 +70,16 @@ class CategoryController extends Controller
         $category->slug = Str::slug($request->name);
         $category->save();
 
+//
+//        return response([
+//            'data'=>$category,
+//            'message'=>'Category Updated.'
+//        ],200);
 
-        return response([
-            'data'=>$category,
-            'message'=>'Category Update.'
-        ],200);
+
+        return $this->apiResponse($category, 'Category Updated', 200);
+
+
     }
 
     /**
@@ -82,9 +92,12 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return response([
-            'message' => 'Category deleted'
-        ],200);
+//        return response([
+//            'message' => 'Category deleted'
+//        ],200);
+
+        return $this->apiResponse(null, 'Category deleted', 200);
+
     }
 
     public function custom1()
