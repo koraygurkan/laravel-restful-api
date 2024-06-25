@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UserStoreRequest;
 
 class UserController extends ApiController
 {
@@ -37,14 +38,15 @@ class UserController extends ApiController
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
 
-        $validator=Validator::make($request->all(),[
-            'email'=> 'required|email|unique:users',
-            'name'=>'required|string|max:50',
-            'password'=>'required'
-        ]);
+        //UserStoreRequest'e taşıdım ondan buna gerek kalmadı
+//        $validator=Validator::make($request->all(),[
+//            'email'=> 'required|email|unique:users',
+//            'name'=>'required|string|max:50',
+//            'password'=>'required'
+//        ]);
 
         if($validator->fails())
             return $this->apiResponse(ResultType::Error, $validator->errors(), 'Validation Error', 422);
