@@ -2,14 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Controllers\Api\ApiController;
-use App\Http\Controllers\Api\ResultType;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\ValidationException;
 
-class UserStoreRequest extends FormRequest
+class UserStoreRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,23 +29,4 @@ class UserStoreRequest extends FormRequest
         ];
     }
 
-
-    /**
-     * Handle a failed validation attempt.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     *
-     */
-    protected function failedValidation(Validator $validator)
-    {
-
-            $errors=(new ValidationException($validator))->errors();
-
-            throw new HttpResponseException(
-                (new ApiController)->apiResponse(ResultType::Error,$errors,'Validation Error',422)
-            );
-
-
-    }
 }
