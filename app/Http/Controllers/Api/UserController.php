@@ -48,8 +48,8 @@ class UserController extends ApiController
 //            'password'=>'required'
 //        ]);
 
-        if($validator->fails())
-            return $this->apiResponse(ResultType::Error, $validator->errors(), 'Validation Error', 422);
+//        if($validator->fails())
+//            return $this->apiResponse(ResultType::Error, $validator->errors(), 'Validation Error', 422);
 
         $user=new User;
         $user->name = $request->name;

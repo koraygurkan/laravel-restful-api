@@ -2,8 +2,13 @@
 
 namespace App\Exceptions;
 
+use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Api\ResultType;
+use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
 use Throwable;
+use Illuminate\Database\Eloquent\ModelNotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -48,8 +53,12 @@ class Handler extends ExceptionHandler
      *
      * @throws \Throwable
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Exception $exception)
     {
+        //dd($exception);
+        if ($exception instanceof ModelNotFoundHttpException)
+            return  (new ApiController)->apiResponse(ResultType::Error,null, 'Kayıt Bulunamadı',JsonResponse::HTTP_NOT_FOUND);
+
         return parent::render($request, $exception);
     }
 }
