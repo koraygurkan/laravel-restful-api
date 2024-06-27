@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductWithCategoriesResource;
 use App\Product;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 //use Psy\Util\Str;
 use Illuminate\Support\Str;
 
-class ProductController extends Controller
+class ProductController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -74,10 +75,28 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
         //return $product;
-        return response($product,200);
+        //ilk yöntemle
+//        $product=Product::find($id);
+//        if ($product)
+//            return response($product,200);
+//        else
+//            return response(['message'=>'Product not found'],404);
+
+        //Try-Catch ile hata yakalama
+        try{
+            $product=Product::findOrFail($id);
+            return $this->apiResponse(ResultType::Success,$product,'Product Found, Success',200);
+        }
+        catch (ModelNotFoundException $exception)
+        {
+            return $this->apiResponse(resultType::Error,null,'product not found!',404);
+        }
+
+
+
     }
 
     /**
