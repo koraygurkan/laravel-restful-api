@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/product','ProductController')->only(['index','show']);
-//only tanımlamasından sonra belirli methodlar kullanılabilir sadece.
+Route::resource('/product','ProductController');
+//only tanımlamasından sonra belirli methodlar kullanılabilir sadece. ->only(['index','show']);
 //except 'de ise seçiçiler hariç tüm methodları aktif kullanabilirsiniz.
+
+Route::get('secured',function ()
+{
+   return "You are authenticated";
+});
