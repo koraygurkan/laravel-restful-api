@@ -22,4 +22,5 @@ Route::resource('/product','ProductController');
 Route::get('secured',function ()
 {
    return "You are authenticated";
-});
+})->middleware('auth');
+//Çalışma devam ediyor. 
