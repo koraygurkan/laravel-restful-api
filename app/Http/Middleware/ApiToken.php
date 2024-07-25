@@ -15,6 +15,29 @@ class ApiToken
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $auth=$request->header('Authorization');
+        if ($auth){
+            $token=str_replace('Bearer ', '', $auth);
+
+            if (!$token){
+                return response()->json([
+                    'message'=> 'No Bearer Token!'
+                ],401);
+            }
+
+            $user=User::where('api_token',$token)->first();
+            if($user)
+            {
+                return response()->json([
+                    'message'=>'Invalid Bearer Token'
+                ],401);
+            }
+            return $next($request);
+        }
+        return response()->json([
+            'message'=>'No a valid Bearer Token!'
+        ],401);
     }
+
+
 }
