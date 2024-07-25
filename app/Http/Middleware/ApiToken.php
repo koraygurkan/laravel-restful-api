@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\User;
 
 class ApiToken
 {
@@ -26,12 +27,15 @@ class ApiToken
             }
 
             $user=User::where('api_token',$token)->first();
-            if($user)
+            if(!$user)
             {
                 return response()->json([
                     'message'=>'Invalid Bearer Token'
                 ],401);
             }
+
+            auth()->setUser($user);
+
             return $next($request);
         }
         return response()->json([
