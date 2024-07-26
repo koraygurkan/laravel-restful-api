@@ -19,6 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth.basic')->get('/user-basic', function (Request $request) {
+    return $request->user();
+});
+
 Route::get('/hello',function (){
    return "hello restfull api";
 });
@@ -46,7 +50,7 @@ Route::apiResources([
     'categories'=>'Api\CategoryController'
 ]);
 
-Route::post('/auth/login','Api/AuthController@login');
+Route::post('/auth/login','Api\AuthController@login');
 
 Route::middleware('api-token')->group(function()
 {
