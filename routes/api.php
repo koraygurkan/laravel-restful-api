@@ -46,6 +46,8 @@ Route::apiResources([
     'categories'=>'Api\CategoryController'
 ]);
 
+Route::post('/auth/login','Api/AuthController@login');
+
 Route::middleware('api-token')->group(function()
 {
     Route::get('/auth/token', function (Request $request) {
