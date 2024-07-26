@@ -35,6 +35,15 @@ class AuthController extends Controller
                     'time'=>time()
                 ]);
             }
+
+            return response()->json([
+                'message'=>'Invalid Password!'
+            ]);
+
         }
+
+        return response()->json([
+            'message'=>'User Not Found!'
+        ]);
     }
 }
