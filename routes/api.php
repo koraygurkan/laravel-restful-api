@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Auth Basic 
 Route::middleware('auth.basic')->get('/user-basic', function (Request $request) {
     return $request->user();
 });
