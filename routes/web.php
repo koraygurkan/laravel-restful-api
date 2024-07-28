@@ -19,8 +19,20 @@ Route::resource('/product','ProductController');
 //only tanımlamasından sonra belirli methodlar kullanılabilir sadece. ->only(['index','show']);
 //except 'de ise seçiçiler hariç tüm methodları aktif kullanabilirsiniz.
 
-Route::get('secured',function ()
+Route::get('/secured',function ()
 {
    return "You are authenticated";
 })->middleware('auth');
-//Çalışma devam ediyor. 
+//Çalışma devam ediyor.
+
+
+Route::get('mlogin', 'mloginController@index')->name('mlogin');
+Route::get('mlogout', 'mloginController@mlogout')->name('mlogout');
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/upload', 'HomeController@upload')->name('upload');
