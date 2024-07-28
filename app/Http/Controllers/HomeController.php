@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except'=>'upload_form']);
     }
 
     /**
@@ -34,6 +34,11 @@ class HomeController extends Controller
         $str = strtoupper($locale);
 
         return view('home', $user)->with('dil',$str);
-
     }
+
+    public function upload_form()
+    {
+        return view('upload_form');
+    }
+
 }
