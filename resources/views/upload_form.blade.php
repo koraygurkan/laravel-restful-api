@@ -8,6 +8,8 @@
                 <div class="card-header">Upload</div>
                     <div class="card-body">
                     <div class="card-body">
+                        <div id="output"></div>
+
                         <form role="form" class="form" onsubmid="return false;">
                             <div class="form-group">
                                 <label for="uploadFile">Select File</label>
@@ -21,4 +23,34 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('footer')
+    <script>
+        (function () {
+            var output = document.getElementById('output');
+            document.getElementById('uploadBtn').onclick = function () {
+                var data = new FormData();
+                data.append('userId', '1');
+                data.append('uploadFile', document.getElementById('uploadFile').files[0]);
+
+                var config = {
+                    headers: {'Content-Type':'multipart/form-data'},
+                    onUploadProgress: function(progressEvent) {
+                        var percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+                    }
+                };
+
+                axios.post('/upload/server', data, config)
+                    .then(function (res) {
+                        output.className = 'container';
+                        output.innerHTML = res.data;
+                    })
+                    .catch(function (err) {
+                        output.className = 'container text-danger';
+                        output.innerHTML = err.message;
+                    });
+            };
+        })();
+    </script>
 @endsection
