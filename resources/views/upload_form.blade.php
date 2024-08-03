@@ -41,7 +41,7 @@
                     }
                 };
 
-                axios.post('/upload/server', data, config)
+                axios.post('https://restful.koraygurkandanaci.com/api/upload', data, config)
                     .then(function (res) {
                         output.innerHTML = res.data;
                     })
