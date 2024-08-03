@@ -43,11 +43,10 @@
 
                 axios.post('/upload/server', data, config)
                     .then(function (res) {
-                        output.className = 'container';
                         output.innerHTML = res.data;
                     })
                     .catch(function (err) {
-                        output.className = 'container text-danger';
+                        output.className = 'text-danger';
                         output.innerHTML = err.message;
                     });
             };
