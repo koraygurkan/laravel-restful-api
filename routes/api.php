@@ -45,7 +45,6 @@ Route::get('products/custom3','Api\ProductController@custom3');
 Route::get('products/listwithcategories','Api\ProductController@listWithCategories');
 
   //Toplu tanımlamalar da yapılabilir.
-// Bu Toplu tanımlamar da yapılır
 Route::apiResources([
     'products'=>'Api\ProductController',
     'users'=>'Api\UserController',
