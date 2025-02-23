@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Auth Basic 
+//Auth Basic
 Route::middleware('auth.basic')->get('/user-basic', function (Request $request) {
     return $request->user();
 });
@@ -44,7 +44,8 @@ Route::get('users/custom1','Api\UserController@custom1');
 Route::get('products/custom3','Api\ProductController@custom3');
 Route::get('products/listwithcategories','Api\ProductController@listWithCategories');
 
-  //Toplu tanımlama yapılabilir
+  //Toplu tanımlamalar da yapılabilir.
+// Bu Toplu tanımlamar da yapılır
 Route::apiResources([
     'products'=>'Api\ProductController',
     'users'=>'Api\UserController',
