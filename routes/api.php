@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Auth Basic
+//Auth Basic 
 Route::middleware('auth.basic')->get('/user-basic', function (Request $request) {
     return $request->user();
 });
@@ -44,16 +44,20 @@ Route::get('users/custom1','Api\UserController@custom1');
 Route::get('products/custom3','Api\ProductController@custom3');
 Route::get('products/listwithcategories','Api\ProductController@listWithCategories');
 
-  //Toplu tanımlamalar da yapılabilir.
-Route::apiResources([
-    'products'=>'Api\ProductController',
-    'users'=>'Api\UserController',
-    'categories'=>'Api\CategoryController'
-]);
+  //Toplu tanımlama yapılabilir
+// gruplama yapılabilir
+Route::middleware('auth:api')->group(function (){
+    Route::apiResources([
+        'products'=>'Api\ProductController',
+        'users'=>'Api\UserController',
+        'categories'=>'Api\CategoryController'
+    ]);
+});
+
 
 Route::post('/auth/login','Api\AuthController@login');
 
-Route::post('/upload/','Api\UploadController@upload');
+Route::post('/upload', 'Api\UploadController@upload');
 
 Route::middleware('api-token')->group(function()
 {
