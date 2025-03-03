@@ -54,6 +54,16 @@ Route::middleware('auth:api')->group(function (){
     ]);
 });
 
+Route::middleware('throttle:5|10,1')->group(function (){
+    Route::get('/throttle-guest',function (){
+        echo "Throttle guest test...";
+    });
+
+    Route::get('/throttle-auth',function (Request $request){
+        echo "Throttle auth test...";
+    })->middleware('auth:api');
+});
+
 
 Route::post('/auth/login','Api\AuthController@login');
 
