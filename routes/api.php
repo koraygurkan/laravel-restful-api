@@ -31,7 +31,6 @@ Route::get('/hello',function (){
 Route::get('/users',function (){
     return factory(User::class, 10)->make();
 });
-
 //Route::apiResource('products','Api\ProductController');
 //Route::apiResource('users','Api/UserController');
 //Route::apiResource('categories','Api/CategoryController');
@@ -46,13 +45,13 @@ Route::get('products/listwithcategories','Api\ProductController@listWithCategori
 
   //Toplu tanımlama yapılabilir
 // gruplama yapılabilir
-Route::middleware('auth:api')->group(function (){
+//Route::middleware('auth:api')->group(function (){
     Route::apiResources([
         'products'=>'Api\ProductController',
         'users'=>'Api\UserController',
         'categories'=>'Api\CategoryController'
     ]);
-});
+//});
 
 Route::middleware('throttle:5|10,1')->group(function (){
     Route::get('/throttle-guest',function (){
