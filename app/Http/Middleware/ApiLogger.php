@@ -30,6 +30,9 @@ class ApiLogger
         $log .='['. $request->method() . ']';
         $log .='['. $request->fullUrl() . ']';
 
-        Log::info($log);
+        //Log::info($log);
+
+        $fileName='api_logger_' . date('Y-m-d') . '.log';
+        \File::append(storage_path('logs' .DIRECTORY_SEPARATOR . $fileName), $log);
     }
 }
