@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ApiLogger
 {
@@ -19,7 +20,13 @@ class ApiLogger
         return $next($request);
     }
 
-    public function terminate(Request $request){
-        
+    public function terminate(Request $request, Response $response){
+        $startTime=LARAVEL_START;
+        $endTime=microtime(true);
+        $log='['.date('Y-m-d H:i:s'). ']';
+        $log .='['. ($endTime-$startTime)*100 . 'ms]';
+        $log .='['. $request->ip() . ']';
+        $log .='['. $request->method() . ']';
+        $log .='['. $request->fullUrl() . ']';
     }
 }
