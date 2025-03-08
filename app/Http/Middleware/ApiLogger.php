@@ -22,17 +22,20 @@ class ApiLogger
     }
 
     public function terminate(Request $request, Response $response){
-        $startTime=LARAVEL_START;
-        $endTime=microtime(true);
-        $log='['.date('Y-m-d H:i:s'). ']';
-        $log .='['. ($endTime - $startTime)*100 . 'ms]';
-        $log .='['. $request->ip() . ']';
-        $log .='['. $request->method() . ']';
-        $log .='['. $request->fullUrl() . ']';
+        if (env('API_LOGGER',true)){
+            $startTime=LARAVEL_START;
+            $endTime=microtime(true);
+            $log='['.date('Y-m-d H:i:s'). ']';
+            $log .='['. ($endTime - $startTime)*100 . 'ms]';
+            $log .='['. $request->ip() . ']';
+            $log .='['. $request->method() . ']';
+            $log .='['. $request->fullUrl() . ']';
 
-        //Log::info($log);
+            //Log::info($log);
 
-        $fileName='api_logger_' . date('Y-m-d') . '.log';
-        \File::append(storage_path('logs' .DIRECTORY_SEPARATOR . $fileName), $log);
+            $fileName='api_logger_' . date('Y-m-d') . '.log';
+            \File::append(storage_path('logs' .DIRECTORY_SEPARATOR . $fileName), $log);
+        }
+
     }
 }
