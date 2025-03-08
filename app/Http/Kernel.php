@@ -42,6 +42,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\ApiLogger::class
         ],
     ];
 
@@ -64,6 +65,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'CheckAge' => \App\Http\Middleware\CheckAge::class,
-        'api'=> \App\Http\Middleware\ApiToken::class
+        'api-token'=> \App\Http\Middleware\ApiToken::class
     ];
 }
