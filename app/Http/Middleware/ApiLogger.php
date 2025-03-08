@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class ApiLogger
 {
@@ -24,7 +25,7 @@ class ApiLogger
         $startTime=LARAVEL_START;
         $endTime=microtime(true);
         $log='['.date('Y-m-d H:i:s'). ']';
-        $log .='['. ($endTime-$startTime)*100 . 'ms]';
+        $log .='['. ($endTime - $startTime)*100 . 'ms]';
         $log .='['. $request->ip() . ']';
         $log .='['. $request->method() . ']';
         $log .='['. $request->fullUrl() . ']';
