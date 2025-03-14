@@ -4,6 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @OA\Schema (
+ *     title="Product"
+ *     description:"Product Model"
+ *  )
+ * */
+
+
 class Product extends Model
 {
     //protected $table='products'; //burada izin verdiği tabloyu belirtiriz.
@@ -11,6 +19,7 @@ class Product extends Model
 
     //burada tüm alanlara eklenebilir, ama bir sütun bildirirsem o sütuna eklenemez diyecektir.
     protected $guarded=[];
+    //protected $hidden=['slug']; // tüm veri çekmelerde gizlenecek
 
     public function categories()
     {
