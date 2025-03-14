@@ -5,12 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ *Product
+ *
+ * @mixin \Eloquent
+ */
+
+/**
  * @OA\Schema (
- *     title="Product"
- *     description:"Product Model"
+ *     title="Product",
+ *     description="Product Model"
  *  )
  * */
-
 
 class Product extends Model
 {
