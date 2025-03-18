@@ -21,7 +21,7 @@ class ProductController extends ApiController
      * @OA\Get(
      *     path="/api/products",
      *     tags={"product"},
-     *     summary="List all products"
+     *     summary="List all products",
      *     @OA\Response(
      *     response=200,
      *     description="A paged array of products"
