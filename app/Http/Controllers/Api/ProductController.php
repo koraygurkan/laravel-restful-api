@@ -26,7 +26,8 @@ class ProductController extends ApiController
      *     name="limit",
      *     in="query",
      *     description="Limit belirleyiniz",
-     *     required=false
+     *     required=false,
+     *     @OA\Schema(type="integer", format="int32")
      *      ),
      *     @OA\Response(
      *     response=200,
