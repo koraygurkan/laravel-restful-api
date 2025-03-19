@@ -31,7 +31,11 @@ class ProductController extends ApiController
      *     @OA\Response(
      *     response=200,
      *     description="A paged array of products"
-     *     )
+     *     ),
+     *     @OA\Response(
+     *     response=403,
+     *     description="Unauthorized"
+     *      )
      * )
      */
     public function index(Request $request)
