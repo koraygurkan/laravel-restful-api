@@ -30,7 +30,8 @@ class ProductController extends ApiController
      *      ),
      *     @OA\Response(
      *     response=200,
-     *     description="A paged array of products"
+     *     description="A paged array of products",
+     *     @OA\JsonContent()
      *     ),
      *     @OA\Response(
      *     response=401,

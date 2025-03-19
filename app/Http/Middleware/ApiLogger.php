@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
 class ApiLogger
@@ -21,7 +21,7 @@ class ApiLogger
         return $next($request);
     }
 
-    public function terminate(Request $request, Response $response){
+    public function terminate(Request $request, JsonResponse $response){
         if (env('API_LOGGER',true)){
             $startTime=LARAVEL_START;
             $endTime=microtime(true);
