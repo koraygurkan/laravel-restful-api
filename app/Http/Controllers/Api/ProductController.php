@@ -33,8 +33,9 @@ class ProductController extends ApiController
      *     description="A paged array of products"
      *     ),
      *     @OA\Response(
-     *     response=403,
-     *     description="Unauthorized"
+     *     response=401,
+     *     description="Unauthorized",
+     *     @OA\JsonContent()
      *      )
      * )
      */
