@@ -13,7 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @OA\Schema (
  *     title="Product",
- *     description="Product Model"
+ *     description="Product Model",
+ *     type="object",
+ *     schema="Product"
  *  )
  * */
 

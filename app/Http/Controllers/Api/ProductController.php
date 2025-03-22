@@ -32,7 +32,10 @@ class ProductController extends ApiController
      *     @OA\Response(
      *     response=200,
      *     description="A paged array of products",
-     *     @OA\JsonContent()
+     *     @OA\JsonContent(
+     *     type="array",
+     *     @OA\Items(ref="#/components/schemas/Product")
+     *       )
      *     ),
      *     @OA\Response(
      *     response=401,
