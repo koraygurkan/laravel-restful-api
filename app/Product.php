@@ -15,7 +15,12 @@ use Illuminate\Database\Eloquent\Model;
  *     title="Product",
  *     description="Product Model",
  *     type="object",
- *     schema="Product"
+ *     schema="Product",
+ *     properties={
+ *     @OA\Property(property="id", type="integer", format="inet64", description="id column"),
+ *     @OA\Property(property="name", type="string")
+ *      },
+ *     required={"id","name"}
  *  )
  * */
 
