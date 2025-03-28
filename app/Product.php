@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
  *Product
  *
  * @mixin \Eloquent
- * /
+ */
+
+
 
 class Product extends Model
 {
