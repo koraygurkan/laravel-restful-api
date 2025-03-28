@@ -18,31 +18,6 @@ class ProductController extends ApiController
      *
      * @return \Illuminate\Http\Response
      *
-     * @OA\Get(
-     *     path="/api/products",
-     *     tags={"product"},
-     *     summary="List all products",
-     *     @OA\Parameter(
-     *     name="limit",
-     *     in="query",
-     *     description="Limit belirleyiniz",
-     *     required=false,
-     *     @OA\Schema(type="integer", format="int32")
-     *      ),
-     *     @OA\Response(
-     *     response=200,
-     *     description="A paged array of products",
-     *     @OA\JsonContent(
-     *     type="array",
-     *     @OA\Items(ref="#/components/schemas/Product")
-     *       )
-     *     ),
-     *     @OA\Response(
-     *     response=401,
-     *     description="Unauthorized",
-     *     @OA\JsonContent()
-     *      )
-     * )
      */
     public function index(Request $request)
     {
